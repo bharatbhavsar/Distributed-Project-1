@@ -1,6 +1,8 @@
-/**
- * Created by braden on 1/29/16.
- */
+/*
+* Aditya Borde 	  (asb140930)
+* Bharat Bhavsar (bmb140330)
+* Braden Herndon (bph091020)
+*/
 public class Message {
 
     private int originId;

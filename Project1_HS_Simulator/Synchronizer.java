@@ -1,11 +1,15 @@
+/*
+* Aditya Borde 	  (asb140930)
+* Bharat Bhavsar (bmb140330)
+* Braden Herndon (bph091020)
+*/
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Created by braden on 2/8/16.
- */
 public class Synchronizer {
-
 
     int numThreads;
     AtomicInteger counter;
@@ -27,5 +31,4 @@ public class Synchronizer {
             finished.set(true);
         }
     }
-
 }

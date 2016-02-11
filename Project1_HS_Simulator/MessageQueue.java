@@ -1,9 +1,12 @@
+/*
+* Aditya Borde 	  (asb140930)
+* Bharat Bhavsar (bmb140330)
+* Braden Herndon (bph091020)
+*/
+
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * Created by braden on 1/29/16.
- */
 public class MessageQueue {
 
     private Queue<Message> queue;

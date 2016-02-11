@@ -1,3 +1,11 @@
+
+/*
+* Aditya Borde 	  (asb140930)
+* Bharat Bhavsar (bmb140330)
+* Braden Herndon (bph091020)
+*/
+
+
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.BrokenBarrierException;
@@ -19,19 +27,6 @@ public class Master {
         Scanner in = null;
         int numberOfThreads = 0;
 
-//        PrintWriter pw = null;
-//        try {
-//            pw = new PrintWriter(new BufferedWriter(new FileWriter("input.dat")));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        int threads = 500;
-//        pw.println(threads);
-//        for (int i = 0; i < threads; i++) {
-//            pw.println(i);
-//        }
-//        pw.close();
-
         try {
             in = new Scanner(new File("input.dat"));
         } catch (FileNotFoundException e) {
@@ -39,7 +34,7 @@ public class Master {
         }
 
         numberOfThreads = Integer.parseInt(in.nextLine());
-        System.out.println("I'm expecting " + numberOfThreads + " threads.");
+        System.out.println("Master: number of processes = " + numberOfThreads);
 
         cb = new CyclicBarrier(numberOfThreads + 1);
         sync = new Synchronizer(numberOfThreads);

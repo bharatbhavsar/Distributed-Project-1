@@ -1,9 +1,12 @@
+/*
+* Aditya Borde 	  (asb140930)
+* Bharat Bhavsar (bmb140330)
+* Braden Herndon (bph091020)
+*/
+
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-/**
- * Created by braden on 1/29/16.
- */
 public class Process implements Runnable {
 
     int pid;
@@ -30,10 +33,7 @@ public class Process implements Runnable {
     }
 
     public void run() {
-//        System.out.println("I am alive and my name is : " + pid);
-        // TODO: Synchronize thread rounds with master.
-        System.out.println(this.pid + " is starting.");
-
+        System.out.println("Thread for " + this.pid + " is created.");
         while (!sync.isFinished()) {
             try {
                 if (processFinished) {
@@ -52,7 +52,6 @@ public class Process implements Runnable {
 
     public void hs() {
         if (active) {
-//                System.out.println(this.pid + " sent messages in phase " + this.phase);
                 outboundRight.send(new Message(pid, "out", (int) Math.pow(2, phase), -1));
                 outboundLeft.send(new Message(pid, "out", (int) Math.pow(2, phase), -1));
                 active = false;
@@ -82,25 +81,14 @@ public class Process implements Runnable {
             return;
         }
 
-
         // Then, check if process phase is done. If the process has received its own ID,
         // coming inward, from both sides, then the process can move on to its phase 2.
-
-//        if (messageFromLeft != null &&
-//                messageFromRight != null &&
-//                messageFromLeft.getOriginId() == this.pid &&
-//                messageFromRight.getOriginId() == this.pid) {
-//            active = true;
-//            phase++;
-//            return;
-//        }
 
         if (myIdReturnedFromLeft && myIdReturnedFromRight) {
             active = true;
             myIdReturnedFromLeft= false;
             myIdReturnedFromRight = false;
             phase++;
-//            System.out.println(this.pid + " is entering the next phase: " + this.phase);
             return;
         }
 
@@ -142,7 +130,6 @@ public class Process implements Runnable {
                 // If it is a different ID, just pass it on in.
                 } else {
                     outboundRight.send(messageFromLeft);
-//                  System.out.println(this.pid + " is passing a message to the right.");
                 }
             }
         }
@@ -185,13 +172,9 @@ public class Process implements Runnable {
                 // If it is a different ID, just pass it on in.
                 } else {
                     outboundLeft.send(messageFromRight);
-//                  System.out.println(this.pid + " is passing a message to the left.");
                 }
             }
         }
-
-
     }
-
 }
 
