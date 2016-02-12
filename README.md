@@ -3,7 +3,9 @@ HS Algorithm Simulator
 
 
 Aditya Borde
+
 Bharat Bhavsar
+
 Braden Herndon
 
 Compiled, run, and tested on csgrads1, using Java 1.8.0_45
